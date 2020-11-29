@@ -1,0 +1,8 @@
+{
+    "django.snippets.exclude": [
+
+        "cms",
+        "wagtail"
+    ],
+    "python.pythonPath": "c:\\Users\\leone\\Documents\\ambientes_virtuales\\disprodelsa\\Scripts\\python.exe"
+}
