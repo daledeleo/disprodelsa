@@ -1,0 +1,14 @@
+# Default ignored files
+/shelf/
+/workspace.xml
+# Datasource local storage ignored files
+/../../../../../../../:\Users\leone\Documents\Practicas empresariales\disprodelsa\.idea/dataSources/
+/dataSources.local.xml
+# Editor-based HTTP Client requests
+/httpRequests/
+/db.sqite3
+/.vscode
+/frontend/node_module
+.env
+
+

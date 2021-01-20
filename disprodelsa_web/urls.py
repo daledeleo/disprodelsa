@@ -15,11 +15,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
-from core.views import frontpage
 
 urlpatterns = [
-    path('',frontpage,name='frontpage'),
-    path('gsheets/', include('gsheets.urls')),
     path('admin/', admin.site.urls),
-    path('api/', include('core.urls')),
+    path('', include('core.urls')),
 ]

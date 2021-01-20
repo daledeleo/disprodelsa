@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" style='display: flex; flex-flow: column; height:100% width:100%'>
     <router-view/>
   </div>
 </template>
