@@ -15,6 +15,7 @@ import datetime
 from decouple import config, Csv
 from corsheaders.defaults import default_headers
 
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -48,7 +49,7 @@ INSTALLED_APPS = [
     'import_export',
     'core',
     'rest_framework',
-    "corsheaders",
+    "corsheaders"
 ]
 
 
@@ -68,7 +69,7 @@ ROOT_URLCONF = 'disprodelsa_web.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'core/')],
+        'DIRS': [os.path.join(BASE_DIR, 'templates/')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -85,9 +86,10 @@ REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
     # or allow read-only access for unauthenticated users.
     'DEFAULT_PERMISSION_CLASSES': 
-    ['rest_framework.permissions.IsAuthenticated',
+    [ 
+        'rest_framework.permissions.IsAuthenticated',
         'rest_framework.permissions.IsAdminUser',
-    ]
+    ],
 }
 
 WSGI_APPLICATION = 'disprodelsa_web.wsgi.application'
@@ -145,3 +147,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+#Configuraciones de Email
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT= 587
+EMAIL_HOST_USER = config('EMAIL_HOST_USER', cast=str)
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD', cast=str)
+EMAIL_USE_TLS = True
+#EMAIL_USE_SLL = True
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+

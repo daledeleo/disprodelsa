@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css?family=Numans');
+
+
+.container[id='container']{
+    background-image: url("../../assets//fondo_inicio.jpg");
+    background-size:100% ;
+    background-repeat: no-repeat;
+    height: 100%;
+    font-family: 'Numans', sans-serif;
+    background-position: auto;
+    align-content: center;
+    padding: 25px;
+    align-content: center;
+    text-align: center;
+}
+
+
+.card{
+    margin-bottom: auto;
+    background-color: rgba(0,0,0,0.5) !important;
+    animation-name: example;
+    animation-duration: 0.5s;
+    align-content: center;
+}
+
+@keyframes example {
+0%  {background-color:yellow; left:200px; top:0px;}
+100% {background-color:red; left:0px; top:0px;}
+}
+
+
+img{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.card-header h3{
+color: white;
+}
+
+password{
+    width:80%;
+}
+.card-header h4{
+    color: white;
+    font-size: 15px;
+}
+
+.message{
+    z-index:4;
+}
+
+.span_password{
+    position: absolute;
+    right: 15px;
+    transform: translate(0,-50%);
+    top:50%;
+    cursor:pointer;
+    z-index:3;
+}
+
+.input-group-prepend span{
+width: 40px;
+background-color: #FFC312;
+color: black;
+border:0 !important;
+}
+
+input:focus{
+outline: 0 0 0 0  !important;
+box-shadow: 0 0 0 0 !important;
+
+}
+
+
+.login_btn{
+color: black;
+background-color: #FFC312;
+width: auto;
+align-content: center;
+
+}
+
+.login_btn:hover{
+color: black;
+background-color: white;
+
+}
+
+.links{
+color:white;
+}
+
+.links a{
+margin-left: 4px;
+color:yellowgreen;
+font-weight: bold;
+}
+
+.link a{
+    margin-left: 4px;
+    color:aqua;
+}

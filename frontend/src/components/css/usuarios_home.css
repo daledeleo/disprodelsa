@@ -1,0 +1,100 @@
+.tile_layout.card-control-section .e-float-text {
+    font-size:14px;
+  }
+
+  .tile_layout.card-control-section .e-error {
+    min-height:150px;
+  }
+
+  .tile_layout.card-control-section .e-error-content {
+    margin:auto;
+    height:inherit;
+    font-size:18px;
+    font-weight:500;
+    color:inherit;
+  }
+
+  .tile_layout.card-control-section .row.filter .tile_search {
+    justify-content: flex-end;
+  }
+
+  .tile_layout.card-control-section .row .e-card {
+    text-align: left;
+  }
+
+  .tile_layout.card-control-section .control-wrapper {
+    padding: 0 20px;
+  }
+
+  .tile_layout.card-control-section .row.filter {
+    margin: 0;
+  }
+
+  .tile_layout.card-control-section .e-card .e-card-actions a {
+    border: 1px solid;
+    display: block;
+    margin: auto;
+    width: 100px;
+    border-radius: inherit;
+  }
+
+  .tile_layout.card-control-section .e-card .e-card-header .e-card-header-caption .e-card-header-title {
+    font-size: 18px;
+  }
+
+  .tile_layout.card-control-section .e-card .e-card-image {
+    height: 165px;
+    width: 200px;
+  }
+
+  .tile_layout.card-control-section .row.filter .col-xs-6.col-sm-6.col-lg-6.col-md-6 {
+    display: inline-flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .tile_layout.card-control-section .col-xs-6.col-sm-6.col-lg-6.col-md-6 {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .card-control-section.tile_layout .e-card-layout {
+    margin: auto;
+    max-width: 190px;
+  }
+
+  #source_link {
+    float: right;
+    margin-right: 10px;
+  }
+
+  @media screen and (max-width: 768px) {
+    #source_link {
+        margin-right: 0px;
+    }
+  }
+  @media (min-width: 960px) {
+    .tile_layout.card-control-section .col-xs-6.col-sm-6.col-lg-6.col-md-6 {
+        width: 25%;
+    }
+    .card-control-section.tile_layout .e-card-layout {
+        max-width: 850px;
+    }
+  }
+  @media (min-width: 540px) {
+    .tile_layout.card-control-section .row.filter {
+        display: flex;
+    }
+    .tile_layout.card-control-section .e-card .e-card-content {
+        min-height: 170px;
+        max-height: 170px;
+    }
+  }
+  @media (max-width: 960px) and (min-width: 540px) {
+    .tile_layout.card-control-section .col-xs-6.col-sm-6.col-lg-6.col-md-6 {
+        width: 50%;
+    }
+    .card-control-section.tile_layout .e-card-layout {
+        max-width: 410px;
+    }
+  }
