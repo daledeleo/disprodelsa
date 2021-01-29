@@ -7,11 +7,10 @@ import './plugins/bootstrap-vue'
 import App from './App'
 import router from './router'
 import { BootstrapVue, BootstrapVueIcons  } from 'bootstrap-vue';
-import ReactiveStorage from "vue-reactive-localstorage";
 import FlashMessage from '@smartweb/vue-flash-message';
 import Vuetify from "vuetify"
 import VueConfirmDialog from 'vue-confirm-dialog'
- 
+
 Vue.use(VueConfirmDialog)
 Vue.component('vue-confirm-dialog', VueConfirmDialog.default)
 
@@ -25,14 +24,9 @@ Vue.use(BootstrapVue)
 Vue.use(BootstrapVueIcons)
 Vue.use(Vuetify);
 
-Vue.use(ReactiveStorage, {
-  "token": "",
-  "type_user": '', 
-  "otherUserPk": 0,
-  "loggedInUser": {},
-  "username":'',
-  "email":''
-});
+Vue.prototype.$isLoggedIn = function() {
+  return localStorage.getItem('token') != undefined && localStorage.getItem('token') != "";
+}
 
 Vue.config.productionTip = false
 
@@ -42,5 +36,4 @@ new Vue({
   router,
   components: { App },
   template: '<App/>',
-  
 })

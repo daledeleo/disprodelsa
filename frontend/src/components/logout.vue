@@ -1,18 +1,15 @@
 <template>
     <p>
+        Saliendo de la cuenta.......
     </p>
 </template>
 
 <script>
 export default {
+    name:'Logout',
     created() {
-        this.storage.token = "";
-        this.storage.loggedInUser = {};
-        this.storage.otherUserPk = 0;
-        this.storage.email='';
-        this.storage.username='';
-        this.storage.type_user='';
-        this.$router.replace("/");
+        localStorage.clear()
+        this.$router.push({name:"Login"});
     }
 }
 </script>

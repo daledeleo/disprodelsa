@@ -45,19 +45,16 @@
     grid-template-columns: auto auto auto;
     padding: 10px;
     align-content: center;
-    transform: translate(10%,150%);
+    transform: translate(5%,150%);
 }
 .mx-auto{
   color:aqua;
 }
 </style>
 <script>
+import forceLogin from "../utils/force_login";
 export default {
   name:'Usuarios',
-   beforeMount(){
-        if (this.storage.token==''){
-          this.$router.push({name:"Login"});
-         }
-    }
+  mixins: [forceLogin]
 };
 </script>

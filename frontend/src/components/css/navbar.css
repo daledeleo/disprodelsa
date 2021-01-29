@@ -6,9 +6,14 @@
 .image_navbar{
   width: 200px;
   height: 40px;
-  transform: translate(-40%,-330%);
+  transform: translate(-40%,-1%);
 }
 
+.image_navbar_else[id='image']{
+  width: 200px;
+  height: 40px;
+  transform: translate(-40%,-330%);
+}
 
 .navbar-brand{
   transform: translate(0%,0%);
@@ -67,7 +72,7 @@
 .bm-item-list {
   color: #b8b7ad;
   margin-left: 10%;
-  font-size: 20px;
+  font-size: 16px;
 }
 .bm-item-list > * {
   display: flex;
@@ -76,6 +81,6 @@
 }
 .bm-item-list > * > span {
   margin-left: 10px;
-  font-weight: 700;
+  font-weight: 500;
   color: white;
 }

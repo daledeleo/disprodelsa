@@ -1,6 +1,5 @@
 
 <template>
-
   <div class="container" id="container"  :style="{'background-image':'url(https://www.farmaceuticonline.com/wp-content/uploads/2019/07/medicaments-presentacio.jpg)'}">
     <div class="d-flex justify-content-center h-100">
       <FlashMessage class="message"></FlashMessage>
@@ -29,8 +28,8 @@
               <div class="input-group-prepend">
                 <span class="input-group-text" ><b-icon icon="key-fill"></b-icon></span>
               </div>
-              <input id="password" type="password" v-model="form.password" class="form-control" placeholder="Ingrese su contrseña"><div class="input-password">
-                <span class="span_password"><b-icon id='icon-password' :icon="icon" v-on:click="toggle()" scale='1.5'></b-icon></span>
+              <input id="password" type="password" v-model="form.password" class="form-control" placeholder="Ingrese su contraseña"><div class="input-password">
+                <span class="span_password"><b-icon id='icon-password' :icon="icon" v-on:click="toggle" scale='1.5'></b-icon></span>
               </div>
             </div>
 
@@ -48,7 +47,7 @@
             ¿Desea tener una cuenta?<a href="/Crear-cuenta">Crear cuenta</a>
           </div>
           <div class="d-flex justify-content-center link">
-            <a href="#">¿Olvido su contraseña?</a>
+            <a href="/Reestablecer-password">¿Olvido su contraseña?</a>
           </div>
         </div>
       </div>
@@ -72,7 +71,7 @@ export default {
         username: "",
         password: "",
       },
-      icon: 'eye-fill',
+      icon: 'eye-fill'
     };
   },
   methods: {
@@ -83,11 +82,12 @@ export default {
         password: this.form.password,
       })
         .then((tokenResponse) => {
-          this.storage.token = tokenResponse.data.token;
-          this.storage.username = tokenResponse.data.username;
-          this.storage.email = tokenResponse.data.email.split("-")[0];
-          this.storage.type_user = tokenResponse.data.type_user;
-          this.$router.push({name:"Inicio"});
+          localStorage.setItem('token',tokenResponse.data.token);
+          localStorage.setItem("username",tokenResponse.data.username);
+          localStorage.setItem('email', tokenResponse.data.email.split("-")[0]);
+          localStorage.setItem('type_user' ,tokenResponse.data.type_user);
+          
+          this.$router.replace({path:'/Inicio'});
         })
         .catch((error) => {
           if (error.response) {
@@ -116,9 +116,6 @@ export default {
         state=true;
       }
     }
-  },
-  computed:{
-    
   }
 };
 </script>

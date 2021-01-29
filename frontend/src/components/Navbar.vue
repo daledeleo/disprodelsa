@@ -1,11 +1,11 @@
 <template>
-  <b-navbar toggleable="lg" type="dark" variant="info">
+  <b-navbar class='navbar navbar-light' style="background-color: #84A9CD;" toggleable="lg" position: sticky>
     <Slide v-if="isLogdedIn">
         <a href="/Inicio">Inicio</a>
       <ul>
           Menu
     <br>
-        {{this.storage.email }}
+        {{email }}
       </ul>
       <a href='/Inicio/Usuarios' v-if="IsAdmin">
         <span><b-icon icon='person'></b-icon> Usuarios</span>
@@ -20,19 +20,19 @@
         <span><b-icon icon='person'></b-icon> Reportar Problemas</span>
       </a>
       <a href='/Inicio' v-if="isQuimicoSr">
-        <span ><b-icon icon='person'></b-icon> Verificar Fidelidad en Pacientes</span>
+        <span ><b-icon icon='person-check'></b-icon> Verificar Fidelidad en Pacientes</span>
+      </a>
+      <a href='/Inicio' v-if="isQuimicoSr || isQuimicoJr">
+        <span  ><b-icon icon='eye'></b-icon> Visualizar Respuestas del Test1 en Pacientes</span>
       </a>
       <a href='/Inicio' v-if="isQuimicoSr">
-        <span  ><b-icon icon='person'></b-icon> Visualizar Respuestas del Test1 en Pacientes</span>
-      </a>
-      <a href='/Inicio' v-if="isQuimicoSr">
-        <span><b-icon icon='person'></b-icon> Ver Listado de Seguimientos de Pacientes</span>
+        <span><b-icon icon='layout-text-sidebar-reverse'></b-icon> Ver Listado de Seguimientos de Pacientes</span>
       </a>
        <a href='/Inicio' v-if="isQuimicoSr">
-        <span v-if="IsAdmin"><b-icon icon='person'></b-icon> Asignar SFT a Pacientes</span>
+        <span ><b-icon icon='person'></b-icon> Asignar SFT a Pacientes</span>
       </a>
       <a href='/Inicio' v-if="isQuimicoJr">
-        <span v-if="IsAdmin"><b-icon icon='person'></b-icon>Entrevistas</span>
+        <span><b-icon icon='person'></b-icon> Entrevistas</span>
       </a>
       <hr>
       <hr>
@@ -46,15 +46,13 @@
 
     <b-navbar-nav class="ml-auto">
       <div>
-        <h4  v-if="isLogdedIn" id="h4_username" class="h4_username">
-          {{ this.storage.username }}-{{ this.storage.type_user }}
+        <h4 v-if="isLogdedIn" id="h4_username" class="h4_username">
+          {{ username }}-{{ type_user }}
         </h4>
-        <img
-          class="image_navbar"
-          src="../assets/Logo_disprodelsa_con_letras.jpeg"
-        >
-        <a class="navbar-brand" href="#">
-          <b-icon  v-if="isLogdedIn"
+        <img v-if="isLogdedIn" class="image_navbar_else" id="image" src="../assets/Logo_disprodelsa_con_letras.jpeg">
+        <img v-else class="image_navbar" src="../assets/Logo_disprodelsa_con_letras.jpeg">
+        <a class="navbar-brand" v-if="isLogdedIn" href="/Perfil">
+          <b-icon  
             icon="person-circle"
             title="Perfil"
             style="position: absolute; right: -10px; top: -5px"
@@ -65,35 +63,42 @@
     </b-navbar-nav>
   </b-navbar>
 </template>
+
 <style scoped>
 @import "./css/navbar.css";
 </style>
+
 <script>
 import { Slide } from "vue-burger-menu";
 
 export default {
   components: { Slide },
   name: "NavBar",
-  data() {
-    return {};
+  data(){
+    return{
+      isCrearCuenta:this.$route.name!='Crear Cuenta' || this.$$route.name!='Reestablecer contraseña',
+      username:localStorage.getItem('username'),
+      type_user:localStorage.getItem('type_user'),
+      email:localStorage.getItem('email'),
+    }
   },
   computed: {
     isLogdedIn() {
-      return this.storage.token != "";
+      return localStorage.length > 1 || localStorage.getItem('token') != undefined;
     },
     IsAdmin() {
-      return this.storage.type_user == "Administrador";
+      return localStorage.getItem('type_user') == "Administrador";
     },
     isPaciente() {
-      return this.storage.type_user == "Paciente";
+      return localStorage.getItem('type_user') == "Paciente";
     },
     isQuimicoSr() {
-      return this.storage.type_user == "QuimicoSr";
+      return localStorage.getItem('type_user') == "Quimico Sr";
     },
     isQuimicoJr() {
-      return this.storage.type_user == "QuimicoJr";
+      return localStorage.getItem('type_user') == "Quimico Jr";
     },
-   
-  }
+  },
+ 
 };
 </script>

@@ -50,14 +50,10 @@
 <script>
 import Api from "../utils/api";
 import help from "../utils/function_helps";
+import forceLogin from "../utils/force_login";
 
 export default {
   name: "Registro_Usuario",
-  beforeMount() {
-    if (this.storage.token == "") {
-      this.$router.push({ name: "Login" });
-    }
-  },
   data: function () {
     return {
       errors: [],
@@ -111,9 +107,9 @@ export default {
               {
                 email: this.email,
                 type_user: this.type_user,
-                creado_por: this.storage.username,
+                creado_por: localStorage.getItem('username'),
               },
-              { headers: { token: this.storage.token } }
+              { headers: { token: localStorage.getItem('token') } }
             )
               .then((exito) => {
                 this.$router.push({
@@ -144,5 +140,6 @@ export default {
       });
     },
   },
+  mixins: [forceLogin]
 };
 </script>

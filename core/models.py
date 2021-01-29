@@ -27,7 +27,7 @@ class UsuarioSistema(Persona):
     username=models.CharField(max_length=50,unique=True)
     password=models.CharField(max_length=50,blank=False)
     date_created=models.DateTimeField(auto_now_add=True)
-    id_email=models.ForeignKey(Email, on_delete=models.CASCADE, blank=False)
+    id_email=models.OneToOneField(Email, on_delete=models.CASCADE,null=True)
     tipo_de_usuario=models.CharField(max_length=50,blank=False)
 
 

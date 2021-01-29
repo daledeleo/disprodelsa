@@ -14,11 +14,8 @@ from rest_framework import status
 class IsAuthenticated(BasePermission):
     def has_permission(self, request, view):
         try:
-            #print("request", request.headers['Token'])
             decoded_payload = jwt_decode_handler(request.headers['Token'])
-            #print(decoded_payload)
             user = UsuarioSistema.objects.get(id=decoded_payload['user_id'])
-            #print(user)
             if user is not None:
                 return True
             return False
@@ -36,7 +33,6 @@ class UsuarioSistemaViewSet(viewsets.ModelViewSet):
     serializer_class=UsuarioSistemaSerializer
 
 class UserLogin(viewsets.ViewSet):
-    
     permission_classes  = (AllowAny,)
 
     def create(self,request):

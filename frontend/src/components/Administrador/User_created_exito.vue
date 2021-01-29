@@ -23,12 +23,13 @@
 }
 </style>
 <script>
+import forceLogin from'../utils/force_login';
 export default {
   name: "Exito_en_Registro_Usuario",
   data() {
     return {
       email: '',
-      type_user: "None",
+      type_user: "",
     };
   },
   created() {
@@ -40,10 +41,6 @@ export default {
       this.$router.push({ name: "Inicio" });
     },
   },
-  beforeMount() {
-    if (this.storage.token == "") {
-      this.$router.push({ name: "Login" });
-    }
-  },
+  mixins: [forceLogin]
 };
 </script>
