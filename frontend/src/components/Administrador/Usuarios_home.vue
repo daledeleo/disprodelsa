@@ -1,7 +1,7 @@
 <template>
   <div class="grid-container">
     <div class="grid-item">
-      <v-card class="mx-auto" max-width="400" outlined color='purple'>
+      <v-card class="mx-auto" max-width="400" outlined color="#E5E9EC">
         <v-list-item three-line>
           <v-list-item-content>
             <div class="overline mb-4">Registrar Usuarios</div>
@@ -20,7 +20,7 @@
       </v-card>
     </div>
     <div class="grid-item">
-      <v-card class="mx-auto" max-width="400" outlined color='purple'>
+      <v-card class="mx-auto" max-width="400" outlined color="#E5E9EC">
         <v-list-item three-line>
           <v-list-item-content>
             <div class="overline mb-4">Ver Usuarios</div>
@@ -33,7 +33,7 @@
         </v-list-item>
 
         <v-card-actions>
-          <v-btn outlined rounded text> Entrar </v-btn>
+          <v-btn href='/Ver-usuarios' outlined rounded text> Entrar </v-btn>
         </v-card-actions>
       </v-card>
     </div>

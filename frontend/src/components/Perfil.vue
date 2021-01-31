@@ -122,10 +122,9 @@
           </div>
 
           <div class="col-md-4 mb-1">
-            <button class="btn btn-primary">Crear Cuenta</button>
+            <button class="btn btn-primary">Cambiar contraseña</button>
             <small id="emailHelp6" class="form-text text-muted"
-              >Para activar este boton tienen que llenar los campos de la
-              contraseña.</small
+              >Para cambiar su contraseña por favor llene todos los campos.</small
             >
           </div>
         </form>

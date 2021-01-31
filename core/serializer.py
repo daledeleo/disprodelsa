@@ -6,15 +6,20 @@ from django.core.mail import EmailMultiAlternatives
 from django.template.loader import get_template
 from django.shortcuts import render
 from django.conf import settings
-from datetime import date
-import os
+from datetime import datetime
+from django.db import models
+
 
 def current_date_format(date):
     months = ("Enero", "Febrero", "Marzo", "Abri", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre")
     day = date.day
     month = months[date.month - 1]
     year = date.year
-    messsage = "{} de {} del {}".format(day, month, year)
+
+    hour=date.hour
+    minute=date.minute
+    seconds=date.second
+    messsage = "{} de {} del {}, {}:{}:{}".format(day, month, year,hour,minute,seconds)
     return messsage
 
 class EmailSerializer(serializers.ModelSerializer):
@@ -40,7 +45,7 @@ class EmailSerializer(serializers.ModelSerializer):
             signup_message=f.read()
             message= EmailMultiAlternatives(subject=subject,
             body=signup_message, from_email=from_email,to=[to_email])
-            d4 = current_date_format(date.today())
+            d4 = current_date_format(datetime.now())
             d={'type_user': type_user,
             "dia_actual":d4}
             html_template=get_template("email.html").render(d)
@@ -51,24 +56,23 @@ class EmailSerializer(serializers.ModelSerializer):
 class UsuarioSistemaSerializer(serializers.ModelSerializer):
     currentPassword=serializers.CharField(required=False,write_only=True)
     class Meta:
-        model=UsuarioSistema
-        fields=("id","creado_por",'date_created','id_email','tipo_de_usuario','nombre','apellido_paterno',
-        'apellido_materno',"username","password","currentPassword")
+        model=User
+        fields=("id",'nombre','apellido_paterno','apellido_materno','tipo_usuario','creado_por',
+        'date_created','password','currentPassword','username','email','is_staff','is_superuser')
         extra_kwargs = {            
             'password': {'write_only': True},
-            'currentPassword': {'write_only': True}
+            'currentPassword': {'write_only': True},
         }
 
-    def create(self,validated_data):
-        #print(validated_data)
+    def create(self,validated_data):   
         validated_data['password']=make_password(validated_data['password'])
-        return super(UsuarioSistemaSerializer,self).create(validated_data)
+        return super(User,self).create(validated_data) 
 
     def update(self, instance, validated_data):
         if validated_data.get("username"):
             instance.username = validated_data.get("username",instance.username)
-            instance.id_email = validated_data.get("id_email",instance.id_email)
-            instance.tipo_de_usuario = validated_data.get("tipo_de_usuario",instance.tipo_de_usuario)
+            instance.email = validated_data.get("email",instance.email)
+            instance.tipo_usuario = validated_data.get("tipo_usuario",instance.tipo_usuario)
         if validated_data.get("password"):
             if validated_data.get("currentPassword"):
                 if check_password(validated_data.get("currentPassword"),instance.password):
@@ -79,3 +83,5 @@ class UsuarioSistemaSerializer(serializers.ModelSerializer):
                 instance.password=make_password(validated_data.get("password"))
         instance.save()
         return instance
+    
+

@@ -31,6 +31,7 @@ DEBUG = config('DEBUG', cast=bool)
 
 ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
 
+AUTH_USER_MODEL = 'core.User'
 
 # Application definition
 #CORS Configuration
@@ -49,7 +50,8 @@ INSTALLED_APPS = [
     'import_export',
     'core',
     'rest_framework',
-    "corsheaders"
+    "corsheaders",
+    'django_rest_passwordreset',
 ]
 
 

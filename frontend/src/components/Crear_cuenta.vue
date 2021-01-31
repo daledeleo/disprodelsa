@@ -2,6 +2,24 @@
 <template>
 <div>
   <FlashMessage class="message"></FlashMessage>
+   <v-card class="mx-auto" id='v-card-parametros' max-width="60%" outlined>
+  <ul class="list-group" id="ul_list">
+   
+      <p>
+        <strong>Su contraseña debe de cumplir los siguientes parámetros</strong>
+      </p>
+      <li class="list1">
+        No ser tan corta, contener al menos 8 caracteres
+      </li>
+      <li class="list2">
+        No ser una contraseña muy común ejemplo (1234, su nombre de usuario)
+      </li>
+      <li class="list2">No ser solo numérica</li>
+      <li class="list4">
+        Usar números y letras (incluso caracteres especiales)
+      </li>
+    </ul>
+    </v-card>
   <form class="needs-validation" @submit="buscar_correo"> 
     <div class="col-md-6 mb-3">
       <label for="validationCustom3">Correo Electronico</label>
@@ -72,6 +90,12 @@
   </div>
 </template>
 
+<style scoped>
+#v-card-parametros{
+  padding: 20px;
+  margin: 3px;
+}
+</style>
 
 <script>
 import Api from './utils/api';
@@ -89,7 +113,6 @@ export default {
         apellido_materno:"",
         email:"",
         password:'',
-        username:'',
         password_repetida:'',
         desabilitar_crear_cuenta:true,
         desabilitar_comprobar_correo:false,
@@ -104,7 +127,8 @@ export default {
   methods:{
    buscar_correo(evt){
     evt.preventDefault();
-     Api.get('email/',{auth:{username:'admin',password:"admin"}}).then(exito=>{
+    //console.log(process.env.VUE_APP_USERNAME)
+     Api.get('email/',{auth:{username:'dalede',password:'1234'}}).then(exito=>{
        
        exito.data.filter(email=>{
          if(email.email==this.form.email){
@@ -131,19 +155,24 @@ export default {
      }else{
        Api.post('usuarios%20del%20sitema/',{
           creado_por:'self',
-          id_email:email_f.email,
-          tipo_de_usuario:this.form.tipo_usuario,
+          email:email_f.email,
+          tipo_usuario:this.form.tipo_usuario,
           nombre:this.form.nombre,
           apellido_paterno:this.form.apellido_paterno,
           apellido_materno:this.form.apellido_materno,
           password:this.form.password,
           username:this.form.username,
-       },{auth:{username:'admin',password:"admin"}},{headers:{}}).then(exito=>{
+       },{auth:{username:'dalede',password:'1234'}},{headers:{}}).then(exito=>{
           this.flashMessage.success({icon:true,title: 'Exito al crear la cuenta', message: 'Usted ya forma parte de nuestro grupo de usuarios, gracias por su registro, ya puede iniciar sesión..'});
           this.$router.push({name:"Login"});
        }).catch(error=>{
-         if(error.response.status==400){
-            this.flashMessage.error({icon:true,title: 'Error al crear una cuenta', message: 'Es posible que su nombre de usuario, ya fue escogido por alguien mas, intente con otro nombre de usuario'});
+         var error_specific=error.response.request.response
+         if(error_specific.email!=undefined){
+            this.flashMessage.error({icon:true,title: 'Error al crear una cuenta', message: 'Ya existe una cuenta asociada a este correo'});
+         }else if(error_specific.password!=undefined){
+            this.flashMessage.error({icon:true,title: 'Error al crear una cuenta', message: 'su contraseña no cumple con los estandares establecidos'});
+         }else if(error_specific.username!=undefined){
+            this.flashMessage.error({icon:true,title: 'Error al crear una cuenta', message: 'el usuario: '+this.username+' ya esta en uso, intento con otro'});
          }else{
             this.flashMessage.error({icon:true,title: 'Error al crear una cuenta', message: 'Esto no tenia que haber pasado por favor intente mas tarde..'});
          }

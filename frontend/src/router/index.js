@@ -9,6 +9,9 @@ import Crear_cuenta from '../components/Crear_cuenta';
 import Logout from '../components/Logout';
 import Reestablecer_password from '../components/Reestablecer_password';
 import Perfil from '../components/Perfil';
+import ResetPassword from '../components/Password_reset_input';
+import Ver_usuarios from '../components/Administrador/Ver_Usuarios';
+import Page404 from '../components/Page404';
 
 Vue.use(Router)
 
@@ -56,6 +59,20 @@ export default new Router({
       path:'/Perfil',
       name:"Perfil",
       component:Perfil
+    },
+    {
+      path:'/Reestablecer-password/reset',
+      name:"Reestablesca su contraseña",
+      component:ResetPassword,
+    },
+    {
+      path:'/Ver-usuarios',
+      name:"Ver Usuarios",
+      component:Ver_usuarios
+    },
+    {
+      path:'*',
+      component:Page404
     },
   ],
   mode: "history"

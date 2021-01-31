@@ -40,25 +40,27 @@
         <span><b-icon icon='door-closed-fill'></b-icon> Cerrar Sesión</span>
       </a>
     </Slide>
-    <b-navbar-brand style="position:absolute; right: 80%; top: 20px">{{
-      this.$route.name
-    }}</b-navbar-brand>
+      <b-navbar-brand  id='name_page'> 
+        <div class='row' >
+          <div class='col-3' id='div_name'>{{this.$route.name}}
+          </div>
+        </div>
+      </b-navbar-brand>
 
-    <b-navbar-nav class="ml-auto">
-      <div>
-        <h4 v-if="isLogdedIn" id="h4_username" class="h4_username">
-          {{ username }}-{{ type_user }}
-        </h4>
-        <img v-if="isLogdedIn" class="image_navbar_else" id="image" src="../assets/Logo_disprodelsa_con_letras.jpeg">
-        <img v-else class="image_navbar" src="../assets/Logo_disprodelsa_con_letras.jpeg">
-        <a class="navbar-brand" v-if="isLogdedIn" href="/Perfil">
+    <b-navbar-nav class="ml-auto" id='navbar_nav'>
+      <div class='row'>
+        <div class="col-9" v-if="isLogdedIn" id="h4">{{ username }}-{{ type_user }}</div>
+        <div class="col-4"><img v-if="isLogdedIn" href="/" class="img-fluid" alt="Responsive image" id="image_navbar_else" src="../assets/Logo_disprodelsa_con_letras.jpeg"><img v-else class="img-fluid" alt="Responsive image" hrref="/" id="image_navbar" src="../assets/Logo_disprodelsa_con_letras.jpeg">
+
+</div>
+        <div class="col-6"> <a class="navbar-brand" v-if="isLogdedIn" href="/Perfil">
           <b-icon  
             icon="person-circle"
             title="Perfil"
-            style="position: absolute; right: -10px; top: -5px"
-            scale="3"
+            scale="2.5"
           ></b-icon>
         </a>
+        </div>
       </div>
     </b-navbar-nav>
   </b-navbar>
@@ -74,31 +76,34 @@ import { Slide } from "vue-burger-menu";
 export default {
   components: { Slide },
   name: "NavBar",
-  data(){
-    return{
-      isCrearCuenta:this.$route.name!='Crear Cuenta' || this.$$route.name!='Reestablecer contraseña',
-      username:localStorage.getItem('username'),
-      type_user:localStorage.getItem('type_user'),
-      email:localStorage.getItem('email'),
-    }
+  data() {
+    return {
+      isCrearCuenta:
+        this.$route.name != "Crear Cuenta" ||
+        this.$route.name != "Reestablecer contraseña",
+      username: localStorage.getItem("username"),
+      type_user: localStorage.getItem("type_user"),
+      email: localStorage.getItem("email"),
+    };
   },
   computed: {
     isLogdedIn() {
-      return localStorage.length > 1 || localStorage.getItem('token') != undefined;
+      return (
+        localStorage.length > 1 || localStorage.getItem("token") != undefined
+      );
     },
     IsAdmin() {
-      return localStorage.getItem('type_user') == "Administrador";
+      return localStorage.getItem("type_user") == "Administrador";
     },
     isPaciente() {
-      return localStorage.getItem('type_user') == "Paciente";
+      return localStorage.getItem("type_user") == "Paciente";
     },
     isQuimicoSr() {
-      return localStorage.getItem('type_user') == "Quimico Sr";
+      return localStorage.getItem("type_user") == "Quimico Sr";
     },
     isQuimicoJr() {
-      return localStorage.getItem('type_user') == "Quimico Jr";
+      return localStorage.getItem("type_user") == "Quimico Jr";
     },
   },
- 
 };
 </script>

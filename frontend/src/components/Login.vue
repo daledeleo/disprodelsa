@@ -6,7 +6,7 @@
       <div class="card">
         <div>
           <img
-            class="img img_logo"
+            class="img-fluid" alt="Responsive image"
             src="../assets/Logo_disprodelsa_con_letras.jpeg"
           />
         </div>
@@ -102,7 +102,7 @@ export default {
                this.flashMessage.error({title: 'Error en el inicio de sesión', message: 'Ha ocurrido un error por favor intente de nuevo'});
             }
           } else {
-               this.flashMessage.error({title: 'Error en el inicio de sesión', message: 'Error inesperado intente mas tarde intente de nuevo'+error});
+               this.flashMessage.error({title: 'Error en el inicio de sesión', message: 'Error inesperado intente mas tarde..'+error});
           }
         });
     },
