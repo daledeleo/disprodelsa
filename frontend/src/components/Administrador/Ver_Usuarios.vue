@@ -50,6 +50,8 @@
 <script>
 import Api from "../utils/api";
 import Esqueleto from "./Esqueleto_User";
+import forceLogin from "../utils/force_login";
+
 export default {
   components: { Esqueleto },
   data() {
@@ -141,5 +143,6 @@ export default {
       }
     },
   },
+  mixins: [forceLogin]
 };
 </script>

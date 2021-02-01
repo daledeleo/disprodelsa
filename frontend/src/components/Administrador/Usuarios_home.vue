@@ -7,7 +7,7 @@
             <div class="overline mb-4">Registrar Usuarios</div>
             <v-list-item-subtitle
               >Aqui podra registrar nuevos usuarios <br />para que puedan
-              acceder al sistema.</v-list-item-subtitle
+              acceder al sistema entre Químicos Sr y Jr e incluso hasta un nuevo administrador.</v-list-item-subtitle
             >
           </v-list-item-content>
 

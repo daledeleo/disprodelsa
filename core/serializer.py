@@ -37,9 +37,9 @@ class EmailSerializer(serializers.ModelSerializer):
             if(validated_data['type_user']=="1"):
                 type_user="Administrador"
             elif(validated_data['type_user']=="2"):
-                type_user='Quimico Sr'
+                type_user='Químico Sr'
             elif (validated_data['type_user']=="3"):
-                type_user="Quimico Jr"
+                type_user="Químico Jr"
             else:
                 type_user="Paciente"
             signup_message=f.read()

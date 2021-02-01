@@ -23,7 +23,6 @@ export default {
   name: "Esqueleto",
   props: {
     usuarios: Array,
-    selection: 1,
   },
 };
 </script>
