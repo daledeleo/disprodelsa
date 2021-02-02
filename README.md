@@ -56,7 +56,7 @@ python manage.py createsuperuser
 ```
 
 _Proceder añadir un email y una contraseña esto es para enviar los correos electronicos_
-_Esta contraseña se la recomienda obtener en luego de activar la verificacion de 2 pasos de gmail_\
+_Esta contraseña se la recomienda obtener en luego de activar la verificacion de 2 pasos de gmail_
 _
 EMAIL_HOST_USER=<example@.com>
 EMAIL_HOST_PASSWORD=<<password>>
