@@ -56,10 +56,11 @@ python manage.py createsuperuser
 ```
 
 _Proceder añadir un email y una contraseña esto es para enviar los correos electronicos_
-_Esta contraseña se la recomienda obtener en luego de activar la verificacion de 2 pasos de gmail_
+_Esta contraseña se la recomienda obtener en luego de activar la verificacion de 2 pasos de gmail_\
+_
 EMAIL_HOST_USER=<example@.com>
-EMAIL_HOST_PASSWORD=<password>
-
+EMAIL_HOST_PASSWORD=<<password>>
+_
 _Finalmente dejar .env.example como .env_
 5. Y finalmente levantar el servidor de django para el backend
  ```
@@ -73,6 +74,12 @@ _Se tiene que llenar todos los campos necesarios_
 _Este sera el encargado de actuar como intermediaria entre el usuario y la base de datos, mostrando las diversas pantallas de la aplicación_
 1. Digirse dentro de la carpeta frontend
 _y ejecutar lo siguiente_
+```
+npm install
+```
+_esto instalara todas las librerias necesarias para la ejecucion del aplicativo_
+
+2. Iniciar el servidor frontend
 ```
 npm start
 ```
