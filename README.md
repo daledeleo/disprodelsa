@@ -82,3 +82,4 @@ _esto instalara todas las librerias necesarias para la ejecucion del aplicativo_
 npm start
 ```
 _esto levantara el proyecto en el puerto 8080 http://localhost:8080_
+_Por favor modificar las credenciales dentro de los modulos de Crear Cuenta y Restablecimiento de contraseña con las credenciales agregadas el momento de crear un superusuario o agregar las credenciales de un administrador del sistema_
