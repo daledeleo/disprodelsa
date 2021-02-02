@@ -6,9 +6,9 @@
 /dataSources.local.xml
 # Editor-based HTTP Client requests
 /httpRequests/
-/db.sqite3
-/.vscode
-/frontend/node_module
-.env
+../db.sqite3
+../.vscode
+../frontend/node_module
+../.env
 
 

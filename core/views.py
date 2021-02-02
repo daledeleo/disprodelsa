@@ -45,7 +45,7 @@ class UsuarioSistemaViewSet(viewsets.ModelViewSet):
             'current_user':reset_password_token.user,
             "username":reset_password_token.user.username,
             'email':reset_password_token.user.email,
-            'reset_password_url':str(settings.CORS_ORIGIN_WHITELIST)+"/"+"Reestablecer-password/reset?token={}".format(
+            'reset_password_url':str(settings.URL_NGROK)+"/"+"Reestablecer-password/reset?token={}".format(
                 reset_password_token.key,
             ),
             "dia_actual":d4
