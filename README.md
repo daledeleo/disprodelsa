@@ -21,7 +21,7 @@ _Lo que necesita antes de empezar_
 
 _Una serie de ejemplos paso a paso que te dice lo que debes ejecutar para tener un entorno de desarrollo ejecutandose_
 
-1. Crear un ambiente virtual en python y activarlo (esto es opcional) explicado en [link] (https://medium.com/@m.monroyc22/configurar-entorno-virtual-python-a860e820aace)
+1. Crear un ambiente virtual en python y activarlo (esto es opcional) explicado en [link] (https://medium.com/@m.monroyc22/configurar-entorno-virtual-python-a860e820aace/)
 
 2. Luego ubicarse en el directorio del proyecto e instalar el archivo requirements.txt
 ```
